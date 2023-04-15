@@ -68,6 +68,16 @@ class _TasksListScreenState extends State<TasksListScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: MyColors.white,
+          foregroundColor: Colors.black,
+          centerTitle: true,
+          title: const Text(
+            'Tasks',
+            style: TextStyle(
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+          ),
+        ),
         body: Column(
           children: [
             CalendarTimeline(
@@ -78,9 +88,9 @@ class _TasksListScreenState extends State<TasksListScreen> {
                 print('Selected date: $date');
                 _selectedDate = date;
               },
-              activeBackgroundDayColor: Color(0xFFDAE6E2),
-              dayColor: Color(0xFF7FA999),
-              activeDayColor: Color(0xFF7FA999),
+              activeBackgroundDayColor: const Color(0xFFDAE6E2),
+              dayColor: const Color(0xFF7FA999),
+              activeDayColor: const Color(0xFF7FA999),
             ),
             const SizedBox(
               height: 10,
@@ -97,7 +107,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                           height: 150,
                           width: 75,
                           child: Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white),
@@ -106,7 +116,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                               padding: const EdgeInsets.all(2.0),
                               child: Text(
                                 slots[index].time,
-                                style: TextStyle(fontSize: 15),
+                                style: const TextStyle(fontSize: 15),
                               ),
                             )),
                           ),
@@ -120,7 +130,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                 child: Container(
                                   width: 4,
                                   height: 150,
-                                  color: Color(0xFFADC8BE),
+                                  color: const Color(0xFFADC8BE),
                                 ),
                               ),
                               if (slots[index].title != null)
@@ -128,7 +138,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                   child: Container(
                                     width: 16,
                                     height: 16,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFADC8BE),
                                         shape: BoxShape.circle),
                                   ),
@@ -141,12 +151,12 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                 height: 150,
                                 child: slots[index].title != null
                                     ? Container(
-                                        margin: EdgeInsets.only(top: 10),
+                                        margin: const EdgeInsets.only(top: 10),
                                         child: Card(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
-                                            side: BorderSide(
+                                            side: const BorderSide(
                                                 color: Color(0xFF000000),
                                                 width: 1),
                                           ),
@@ -156,7 +166,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                               children: [
                                                 Row(
                                                   children: [
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 5,
                                                     ),
                                                     SvgPicture.asset(
@@ -164,7 +174,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                                       width: 32,
                                                       height: 32,
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 20,
                                                     ),
                                                     Column(
@@ -174,19 +184,20 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                                       children: [
                                                         Text(
                                                           slots[index].title!,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 18,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400),
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           height: 5,
                                                         ),
                                                         Text(
                                                           slots[index]
                                                               .description!,
-                                                          style: TextStyle(
+                                                          style:
+                                                              const TextStyle(
                                                             fontSize: 14,
                                                           ),
                                                         ),
@@ -194,12 +205,13 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                                     )
                                                   ],
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 20,
                                                 ),
                                                 Container(
                                                   height: 1,
-                                                  color: Color(0xFFADC8BE),
+                                                  color:
+                                                      const Color(0xFFADC8BE),
                                                 ),
                                                 Row(
                                                   children: [
@@ -215,7 +227,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                                                 changed!;
                                                           });
                                                         }),
-                                                    Expanded(
+                                                    const Expanded(
                                                         child: Text(
                                                       'Finish Task',
                                                       style: TextStyle(
@@ -228,7 +240,7 @@ class _TasksListScreenState extends State<TasksListScreen> {
                                           ),
                                         ),
                                       )
-                                    : Placeholder(
+                                    : const Placeholder(
                                         color: Colors.transparent,
                                       )))
                       ],

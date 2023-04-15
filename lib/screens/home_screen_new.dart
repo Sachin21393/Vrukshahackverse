@@ -407,7 +407,9 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
             width: 20,
             height: 20,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/dscan');
+          },
         ),
         IconButton(
           icon: SvgPicture.asset(
