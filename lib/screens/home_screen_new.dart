@@ -272,10 +272,15 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'All tasks',
-                    style: TextStyle(color: MyColors.blueColor),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/tasks');
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Text(
+                      'All tasks',
+                      style: TextStyle(color: MyColors.blueColor),
+                    ),
                   ),
                 ),
               ],
