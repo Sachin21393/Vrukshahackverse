@@ -5,7 +5,9 @@ import 'package:eppo/pages/profile_screen.dart';
 import 'package:eppo/screens/disease_detail_screen.dart';
 import 'package:eppo/screens/ob_form_screen.dart';
 import 'package:eppo/screens/ob_garden_name.dart';
+import 'package:eppo/screens/ob_location_analyze.dart';
 import 'package:eppo/screens/ob_location_screen.dart';
+import 'package:eppo/screens/onboarding_screen.dart';
 import 'package:eppo/screens/plant_detail.dart';
 import 'package:eppo/screens/plants_slot_screen.dart';
 import 'package:eppo/screens/qr_type_screen.dart';
@@ -32,4 +34,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   '/qrscan': (p0) => QRViewExample(),
   '/plantdetail': (p0) => PlantDetailScreen(),
   '/slots': (p0) => PlantSlotScreen(),
+  '/ob': (p0) => OnboaardingScreen(),
+  '/oblocationanalysis': (p0) => ObLocationAnalysis(),
 };

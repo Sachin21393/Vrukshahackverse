@@ -120,7 +120,8 @@ class _ObLocationScreenState extends State<ObLocationScreen> {
                             Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/obname');
+                                    Navigator.of(context)
+                                        .pushNamed('/oblocationanalysis');
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: MyColors.primaryColor,

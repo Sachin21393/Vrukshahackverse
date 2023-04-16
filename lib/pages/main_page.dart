@@ -89,14 +89,38 @@ class _MainPageState extends State<MainPage> {
           children: [
             HomeScreenNew(),
             Center(
-              child: Text("Shop"),
+              child: SafeArea(
+                child: Scaffold(
+                  body: SingleChildScrollView(
+                    child: Column(
+                      children: [Image.asset('assets/images/shop.png')],
+                    ),
+                  ),
+                ),
+              ),
             ),
             Center(
-              child: Text("Community"),
+              child: SafeArea(
+                child: Scaffold(
+                  body: SingleChildScrollView(
+                    child: Column(
+                      children: [Image.asset('assets/images/community.png')],
+                    ),
+                  ),
+                ),
+              ),
             ),
             Center(
-              child: Text("Profile"),
-            )
+              child: SafeArea(
+                child: Scaffold(
+                  body: SingleChildScrollView(
+                    child: Column(
+                      children: [Image.asset('assets/images/profile.png')],
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
           onPageChanged: (idx) {
             setState(() {

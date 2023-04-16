@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: '/',
+      initialRoute: '/ob',
       routes: routes,
     );
   }

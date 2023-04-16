@@ -18,7 +18,7 @@ class MlService {
   late final Dio _dio;
   late final _timeNow;
   MlService() {
-    _apiLink = "http://10.20.61.252:8080";
+    _apiLink = "http://10.20.62.6:8080";
     _dio = Dio(
       BaseOptions(
         headers: {

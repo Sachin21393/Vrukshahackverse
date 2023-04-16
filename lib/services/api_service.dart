@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:eppo/models/plant_specs_model.dart';
+import 'package:eppo/models/temp_model.dart';
 // import 'package:eppo/models/get_slots_response.dart';
 import 'package:intl/intl.dart';
 
@@ -41,6 +42,12 @@ class ApiService {
     });
     print(response.data);
     return response.data.map<PlantRec>((e) => PlantRec.fromJson(e)).toList();
+  }
+
+  Future<TempRes> getTemp() async {
+    Response response = await _dio.post('/temp');
+    print(response.data);
+    return TempRes.fromJson(response.data);
   }
 
   Future<PlantSpecs> getPlantSpecs(String name) async {
