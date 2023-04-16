@@ -29,52 +29,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final String doctorsJson = '''
-  {
-    "doctors": [
-      {
-        "name": "Dr. Masuda Khan",
-        "speciality": "Cardiology",
-        "location": "New York",
-        "rating": 4.8,
-        "image": "assets/Masuda_Khan.png",
-        "id": "64157b99303ac48fb69cd12e"
-      },
-      {
-        "name": "Dr. Salina Zaman",
-        "speciality": "Cardiology",
-        "location": "Los Angeles",
-        "rating": 4.5,
-        "image": "assets/Salina_Zaman.png",
-        "id": "6415da02cc26535ffc32da5c"
-      },
-      {
-        "name": "Dr. Johir Raihan",
-        "speciality": "Cardiologist",
-        "location": "Chicago",
-        "rating": 4.9,
-        "image": "assets/Johir_Raihan.png",
-        "id": "64157b99303ac48fb69cd12e"
-      },
-      {
-        "name": "Dr. Kiran Shakia",
-        "speciality": "Dermatology",
-        "location": "Houston",
-        "rating": 4.3,
-        "image": "assets/kiran.png",
-        "id": "6415da02cc26535ffc32da5c"
-      },
-      {
-        "name": "Dr. Serena Gome",
-        "speciality": "Neurology",
-        "location": "San Francisco",
-        "rating": 4.7,
-        "image": "assets/Serena_Gome.png",
-        "id": "64157b99303ac48fb69cd12e"
-      }
-    ]
-  }
-  ''';
   // current index state
   int _currentIndex = 0;
 
@@ -151,7 +105,9 @@ class _MainPageState extends State<MainPage> {
           },
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/slots');
+          },
           backgroundColor: MyColors.primaryColor,
           child: SvgPicture.asset('assets/images/fab.svg'),
         ),

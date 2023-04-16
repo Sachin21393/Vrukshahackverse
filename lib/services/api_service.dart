@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:eppo/models/plant_specs_model.dart';
 // import 'package:eppo/models/get_slots_response.dart';
 import 'package:intl/intl.dart';
 
@@ -11,13 +12,14 @@ import 'package:eppo/models/order.dart';
 import 'package:intl/intl.dart';
 
 import '../models/chat_room.dart';
+import '../models/plant_rec_mode.dart';
 
 class ApiService {
   late final _apiLink;
   late final Dio _dio;
   late final _timeNow;
   ApiService() {
-    _apiLink = "https://E4.adityasurve1.repl.co";
+    _apiLink = "http://10.20.62.6:80";
     _dio = Dio(
       BaseOptions(
         headers: {
@@ -31,6 +33,22 @@ class ApiService {
       ),
     );
     _timeNow = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+  }
+
+  Future<List<PlantRec>> getPlantRec(String type) async {
+    Response response = await _dio.post('/plants', data: {
+      "type": type,
+    });
+    print(response.data);
+    return response.data.map<PlantRec>((e) => PlantRec.fromJson(e)).toList();
+  }
+
+  Future<PlantSpecs> getPlantSpecs(String name) async {
+    Response response = await _dio.post('/usp1', data: {
+      "name": name,
+    });
+    print(response.data);
+    return PlantSpecs.fromJson(response.data);
   }
 
   // Future<ChatRoom> getChatMessages(String userId, String otherId) async {
@@ -104,8 +122,8 @@ class ApiService {
   }
 
   Future<void> sendFcmToken(String token, String userId) async {
-    final data = {"id": userId, "token": token};
-    Response response = await _dio.post('/user/pushToken', data: data);
+    final data = {"token": token};
+    Response response = await _dio.post('/give', data: data);
     print(response.data);
   }
 

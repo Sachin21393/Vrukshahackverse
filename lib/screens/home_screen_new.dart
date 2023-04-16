@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eppo/constants/colors.dart';
+import 'package:eppo/screens/plant_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,8 +21,9 @@ class Task {
   final String ml;
   final String title;
   final bool isWatering;
+  final String id;
 
-  Task(this.image, this.time, this.ml, this.title, this.isWatering);
+  Task(this.image, this.time, this.ml, this.title, this.isWatering, this.id);
 }
 
 class Product {
@@ -48,11 +50,11 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
 
   final List<Task> tasks = [
     Task('assets/images/task1.png', 'Today 2:00 pm', 'With 100ml', 'Watering',
-        true),
-    Task('assets/images/task2.png', 'Today 2:00 pm', 'With 100ml', 'Watering',
-        true),
-    Task('assets/images/task3.png', 'Today 2:00 pm', 'With 100ml', 'Watering',
-        false),
+        true, "clivia"),
+    Task('assets/images/task2.png', 'Today 4:00 pm', 'With 200ml', 'Watering',
+        true, "Leten Rose"),
+    Task('assets/images/task3.png', 'Today 7:00 pm', 'With 100ml', 'Cutting',
+        false, "Lamb's Ear"),
   ];
   final List<Product> recs = [
     Product('assets/images/rec1.png', 'Butterfly Pea', 75),
@@ -297,7 +299,10 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (ctx, index) => GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/plantdetail',
+                            arguments: PdArgs(tasks[index].id));
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(

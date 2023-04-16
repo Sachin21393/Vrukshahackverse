@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:eppo/constants/colors.dart';
+import 'package:eppo/models/disease_model.dart';
+import 'package:eppo/services/ml_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -24,60 +27,72 @@ class _DiseaseDetailScreenState extends State<DiseaseDetailScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as DDArgs;
 
     print(args.image.path);
-    return Scaffold(
-        body: Stack(
-      children: [
-        Image.asset('assets/images/bg.png',
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.topCenter),
-        SingleChildScrollView(
-          child: SafeArea(
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
+    return FutureBuilder<DiseaseModel>(
+        future: MlService().predictDisease(
+            base64Encode(File(args.image.path).readAsBytesSync())),
+        builder: (context, snapshot) {
+          if (snapshot == null || !snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          var disease = snapshot.data!;
+          return Scaffold(
+              body: Stack(
+            children: [
+              Image.asset('assets/images/bg.png',
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.topCenter),
+              SingleChildScrollView(
+                child: SafeArea(
+                  child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                          size: 16,
+                      Container(
+                        margin:
+                            const EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            GestureDetector(
+                              onTap: () => Navigator.pop(context),
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
+                            Text(
+                              'Plant Growth',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16),
+                            ),
+                            Text("")
+                          ],
                         ),
                       ),
-                      Text(
-                        'Plant Growth',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16),
-                      ),
-                      Text("")
+                      const SizedBox(height: 20),
+                      Container(
+                          width: double.infinity,
+                          child: AspectRatio(
+                              aspectRatio: 3 / 2,
+                              child: Image.file(File(args.image.path),
+                                  fit: BoxFit.cover))),
+                      const SizedBox(height: 20),
+                      diseaseDetail(disease),
+                      const SizedBox(height: 20),
+                      plantProgresss()
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                Container(
-                    width: double.infinity,
-                    child: AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: Image.file(File(args.image.path),
-                            fit: BoxFit.cover))),
-                const SizedBox(height: 20),
-                diseaseDetail(),
-                const SizedBox(height: 20),
-                plantProgresss()
-              ],
-            ),
-          ),
-        )
-      ],
-    ));
+              )
+            ],
+          ));
+        });
   }
 
   Column plantProgresss() {
@@ -163,7 +178,7 @@ class _DiseaseDetailScreenState extends State<DiseaseDetailScreen> {
     );
   }
 
-  Column diseaseDetail() {
+  Column diseaseDetail(DiseaseModel disease) {
     return Column(
       children: [
         Row(
@@ -203,16 +218,15 @@ class _DiseaseDetailScreenState extends State<DiseaseDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text('Leaf spot',
-                      style: TextStyle(
+                  Text(disease.disease,
+                      style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontSize: 16)),
                   const SizedBox(height: 5),
-                  const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat luctus magna eget pretium. Sed commodo tincidunt porttitor. Suspendisse sed diam semper lacus accumsan rutrum. Donec euismod eleifend dolor nec iaculis. Vivamus commodo finibus iaculis. Curabitur consectetur quam et maximus placerat. Nunc mattis ultricies dapibus',
+                  Text(disease.remedy,
                       maxLines: 3,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
                           fontSize: 12,

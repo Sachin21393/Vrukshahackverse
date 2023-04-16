@@ -27,36 +27,25 @@ class _TasksListScreenState extends State<TasksListScreen> {
   DateTime _selectedDate = DateTime.now();
 
   List<DaySlot> slots = [
-    DaySlot(
-        time: '08 AM',
-        title: 'Task 1',
-        description: 'Butterfly Pea',
-        isDone: false),
-    DaySlot(
-        time: '09 AM',
-        title: 'Task 2',
-        description: 'Butterfly Pea',
-        isDone: false),
-    DaySlot(time: '10 AM'),
-    DaySlot(
-        time: '11 AM',
-        title: 'Task 3',
-        description: 'Butterfly Pea',
-        isDone: true),
     DaySlot(time: '12 PM'),
     DaySlot(time: '1 PM'),
-    DaySlot(time: '2 PM'),
+    DaySlot(
+        time: '2 PM', title: 'Watering', description: 'Clivia', isDone: false),
     DaySlot(time: '3 PM'),
-    DaySlot(time: '4 PM'),
+    DaySlot(
+        time: '4 PM',
+        title: 'Watering',
+        description: 'Leten Rose',
+        isDone: false),
     DaySlot(time: '5 PM'),
     DaySlot(time: '6 PM'),
-    DaySlot(time: '7 PM'),
-    DaySlot(time: '8 PM'),
     DaySlot(
-        time: '9 PM',
+        time: '7 PM',
         title: 'Task 4',
         description: 'Butterfly Pea',
         isDone: false),
+    DaySlot(time: '8 PM'),
+    DaySlot(time: '9 PM'),
     DaySlot(
         time: '10 PM',
         title: 'Task 5',
