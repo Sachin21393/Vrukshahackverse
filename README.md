@@ -1,4 +1,4 @@
-# Vruksh - A step towards greener ---
+# Vruksh - A step towards greener 
 
 Grow your own forest, one tree at a time
 
