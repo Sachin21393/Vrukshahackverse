@@ -20,7 +20,7 @@ class ApiService {
   late final Dio _dio;
   late final _timeNow;
   ApiService() {
-    _apiLink = "http://10.53.21.182:80";
+    _apiLink = "http://192.168.229.92:80";
     _dio = Dio(
       BaseOptions(
         headers: {

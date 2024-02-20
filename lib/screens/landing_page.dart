@@ -1,23 +1,23 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
 
-import '../ui_view/slider_layout_view.dart';
+// import '../ui_view/slider_layout_view.dart';
 
-class LandingPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _LandingPageState();
-}
+// class LandingPage extends StatefulWidget {
+//   @override
+//   State<StatefulWidget> createState() => _LandingPageState();
+// }
 
-class _LandingPageState extends State<LandingPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: onBoardingPage(),
-    );
-  }
+// class _LandingPageState extends State<LandingPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: onBoardingPage(),
+//     );
+//   }
 
-  Widget onBoardingPage() => Container(
-        child: SliderLayoutView(),
-      );
-}
+//   Widget onBoardingPage() => Container(
+//         child: SliderLayoutView(),
+//       );
+// }

@@ -94,7 +94,7 @@ class _ObLocationAnalysisState extends State<ObLocationAnalysis> {
                             fontWeight: FontWeight.bold,
                             fontSize: 14)),
                     const SizedBox(height: 5),
-                    const Text('NIT Surathkal, Karnataka, India',
+                    const Text('Thadomal Shahani Engineering College',
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w300,

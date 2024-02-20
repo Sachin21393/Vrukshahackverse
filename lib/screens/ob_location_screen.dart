@@ -27,7 +27,7 @@ class _ObLocationScreenState extends State<ObLocationScreen> {
                   borderRadius: BorderRadius.circular(20),
                   child: GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(13.009, 74.795),
+                      target: LatLng(19.0620359, 72.8343853),
                       zoom: 15,
                     ),
                     markers: {
